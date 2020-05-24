@@ -1,0 +1,4 @@
+# load theme
+rofi.theme: ~/.config/rofi/colors-rofi-dark.rasi
+
+rofi.font: Roboto 12

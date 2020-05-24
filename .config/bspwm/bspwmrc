@@ -1,0 +1,40 @@
+#! /bin/sh
+
+pkill sxhkd
+sxhkd &
+pkill compton
+compton --focus-exclude '_NET_WM_NAME@:s = "rofi"' &
+./.fehbg &
+numlockx &
+pkill polybar
+polybar top &
+ /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+
+bspc monitor -d I II III IV
+
+bspc config focus_follows_pointer true
+bspc config single_monocle false
+
+# Set the border colors.
+bspc config normal_border_color "$color0"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color1"
+bspc config presel_feedback_color "$color1"
+
+bspc config border_width         0
+bspc config window_gap           5
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Zathura follow=on
+bspc rule -a Snes9x-gtk state=floating
+bspc rule -a Lxappearance state=floating
+bspc rule -a angrysearch state=floating
+bspc rule -a Emacs state=tiled
